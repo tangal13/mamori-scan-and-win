@@ -1,5 +1,8 @@
 import { StyleSheet, Text, View } from "react-native";
 
+import { COLORS } from "@/constants/colors";
+import { FONTS } from "@/constants/theme";
+
 type PlaceholderScreenProps = {
   title: string;
 };
@@ -17,8 +20,11 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: COLORS.background,
   },
   title: {
+    fontFamily: FONTS.extraBold,
     fontSize: 24,
+    color: COLORS.dark,
   },
 });
