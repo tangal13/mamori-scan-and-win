@@ -8,6 +8,7 @@ import { CARD_SHADOW, FONTS, RADIUS, SPACING } from "@/constants/theme";
 type PrizeCardProps = {
   shop: string;
   logo: ImageProps["source"];
+  logoScale: number;
   medal: ImageProps["source"];
   amount: string;
   color: string;
@@ -16,6 +17,7 @@ type PrizeCardProps = {
 export function PrizeCard({
   shop,
   logo,
+  logoScale,
   medal,
   amount,
   color,
@@ -26,8 +28,7 @@ export function PrizeCard({
         <Image
           source={logo}
           alt={shop}
-          contentFit="contain"
-          style={styles.logo}
+          style={[styles.logo, { width: `${logoScale * 100}%` }]}
         />
       </View>
       <View style={[styles.voucher, { backgroundColor: color }]}>
@@ -50,12 +51,15 @@ const styles = StyleSheet.create({
   },
   logoArea: {
     height: 64,
-    padding: SPACING.small,
+    alignItems: "center",
+    justifyContent: "center",
+    overflow: "hidden",
+    borderTopLeftRadius: RADIUS.medium,
+    borderTopRightRadius: RADIUS.medium,
   },
   logo: {
-    flex: 1,
-    // Keeps the logo below the medal.
-    marginTop: SPACING.medium,
+    // The logo files are square. The white above and below the logo is cut off.
+    aspectRatio: 1,
   },
   voucher: {
     height: 64,
@@ -74,15 +78,15 @@ const styles = StyleSheet.create({
   voucherLabel: {
     fontFamily: FONTS.body,
     fontSize: 16,
-    lineHeight: 20,
+    lineHeight: 16,
     color: COLORS.white,
   },
   medal: {
     position: "absolute",
     // Half of the medal sticks out above the card.
-    top: -15,
+    top: -16,
     alignSelf: "center",
-    width: 30,
-    height: 30,
+    width: 32,
+    height: 32,
   },
 });

@@ -13,7 +13,7 @@ const TAB_BAR_HEIGHT = 72;
 
 const TABS = [
   { name: "home", title: TAB_TITLES.home, icon: ICONS.home },
-  { name: "products", title: TAB_TITLES.products, icon: ICONS.search },
+  { name: "products", title: TAB_TITLES.products, icon: ICONS.products },
   { name: "lists", title: TAB_TITLES.lists, icon: ICONS.lists },
   { name: "index", title: TAB_TITLES.scanAndWin, icon: ICONS.ticket },
   { name: "profile", title: TAB_TITLES.profile, icon: ICONS.profile },
@@ -27,7 +27,7 @@ export default function TabsLayout() {
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: COLORS.green,
-        tabBarInactiveTintColor: COLORS.tabInactive,
+        tabBarInactiveTintColor: COLORS.lightGray,
         tabBarLabelStyle: styles.label,
         // The phone's own bar at the bottom needs space below ours.
         tabBarStyle: [styles.bar, { height: TAB_BAR_HEIGHT + insets.bottom }],
@@ -60,11 +60,12 @@ const styles = StyleSheet.create({
     borderTopWidth: 0,
   },
   icon: {
-    width: 24,
-    height: 24,
+    width: 20,
+    height: 20,
   },
   label: {
-    fontFamily: FONTS.regular,
+    fontFamily: FONTS.medium,
     fontSize: 12,
+    marginTop: 2,
   },
 });

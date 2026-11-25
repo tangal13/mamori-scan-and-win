@@ -33,10 +33,11 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: "row",
     alignItems: "center",
-    gap: SPACING.large,
-    paddingBottom: SPACING.large,
+    gap: 15,
+    // Together with the line this puts the next block on the design's grid.
+    paddingBottom: 13,
     borderBottomWidth: 1,
-    borderBottomColor: COLORS.divider,
+    borderBottomColor: COLORS.lightGray,
   },
   avatar: {
     width: 40,
@@ -49,22 +50,22 @@ const styles = StyleSheet.create({
   greeting: {
     fontFamily: FONTS.extraBold,
     fontSize: 18,
-    lineHeight: 22,
+    lineHeight: 20,
     color: COLORS.dark,
   },
   scanLevel: {
     fontFamily: FONTS.body,
     fontSize: 14,
-    lineHeight: 18,
+    lineHeight: 20,
     color: COLORS.dark,
   },
   tickets: {
     alignItems: "flex-end",
+    gap: SPACING.small,
   },
   ticketCount: {
     flexDirection: "row",
     alignItems: "center",
-    gap: SPACING.small,
   },
   ticketIcon: {
     width: 24,
@@ -77,9 +78,9 @@ const styles = StyleSheet.create({
     color: COLORS.black,
   },
   link: {
-    fontFamily: FONTS.regular,
+    fontFamily: FONTS.semiBold,
     fontSize: 12,
-    lineHeight: 16,
+    lineHeight: 14,
     color: COLORS.coral,
   },
 });

@@ -62,17 +62,21 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.black,
     fontSize: 32,
     lineHeight: 36,
-    letterSpacing: 2,
+    // 9% of the font size, like in the design.
+    letterSpacing: 2.88,
+    // The last digit also gets this space. Taking it away keeps the number centred.
+    marginRight: -2.88,
     color: COLORS.black,
   },
   colon: {
     letterSpacing: 0,
+    marginRight: 0,
   },
   label: {
     fontFamily: FONTS.black,
     fontSize: 12,
     lineHeight: 16,
-    letterSpacing: 1,
+    letterSpacing: 1.08,
     color: COLORS.black,
   },
   message: {

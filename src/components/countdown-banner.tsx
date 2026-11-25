@@ -70,11 +70,11 @@ const styles = StyleSheet.create({
   day: {
     fontFamily: FONTS.extraBold,
     fontSize: 40,
-    lineHeight: 36,
+    lineHeight: 40,
     color: COLORS.dark,
   },
   month: {
-    fontFamily: FONTS.bold,
+    fontFamily: FONTS.extraBold,
     fontSize: 12,
     lineHeight: 14,
     color: COLORS.dark,

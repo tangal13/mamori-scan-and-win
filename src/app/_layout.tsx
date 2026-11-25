@@ -1,6 +1,7 @@
 import { FiraSans_400Regular } from "@expo-google-fonts/fira-sans";
 import {
-  Nunito_400Regular,
+  Nunito_500Medium,
+  Nunito_600SemiBold,
   Nunito_700Bold,
   Nunito_800ExtraBold,
   Nunito_900Black,
@@ -19,7 +20,8 @@ SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
   const [fontsLoaded, fontError] = useFonts({
     FiraSans_400Regular,
-    Nunito_400Regular,
+    Nunito_500Medium,
+    Nunito_600SemiBold,
     Nunito_700Bold,
     Nunito_800ExtraBold,
     Nunito_900Black,

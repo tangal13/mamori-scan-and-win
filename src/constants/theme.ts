@@ -1,6 +1,7 @@
 export const FONTS = {
   body: "FiraSans_400Regular",
-  regular: "Nunito_400Regular",
+  medium: "Nunito_500Medium",
+  semiBold: "Nunito_600SemiBold",
   bold: "Nunito_700Bold",
   extraBold: "Nunito_800ExtraBold",
   black: "Nunito_900Black",
@@ -20,4 +21,4 @@ export const RADIUS = {
   pill: 20,
 };
 
-export const CARD_SHADOW = "0px 2px 4px rgba(0, 0, 0, 0.1)";
+export const CARD_SHADOW = "0px 2px 7px 1px rgba(0, 0, 0, 0.08)";

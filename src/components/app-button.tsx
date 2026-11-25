@@ -19,7 +19,7 @@ export function AppButton({ title, variant }: AppButtonProps) {
       <Text
         style={[
           styles.title,
-          { color: isFilled ? COLORS.white : COLORS.green },
+          { color: isFilled ? COLORS.background : COLORS.green },
         ]}
       >
         {title}

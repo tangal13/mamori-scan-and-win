@@ -8,6 +8,7 @@ export const ACTIONS = [
     icon: ICONS.search,
     iconColor: COLORS.dark,
     circleColor: COLORS.white,
+    borderColor: COLORS.cream,
     href: "/find-products",
   },
   {
@@ -15,6 +16,7 @@ export const ACTIONS = [
     icon: ICONS.camera,
     iconColor: COLORS.white,
     circleColor: COLORS.orange,
+    borderColor: COLORS.orange,
     href: "/take-photos",
   },
   {
@@ -22,6 +24,7 @@ export const ACTIONS = [
     icon: ICONS.ticket,
     iconColor: COLORS.white,
     circleColor: COLORS.green,
+    borderColor: COLORS.green,
     href: "/earn-tickets",
   },
 ] as const;
@@ -51,6 +54,7 @@ export const PRIZES = [
   {
     shop: "Welbee’s",
     logo: IMAGES.logoWelbees,
+    logoScale: 1,
     medal: IMAGES.medalGold,
     amount: "€1,000",
     color: COLORS.green,
@@ -58,6 +62,7 @@ export const PRIZES = [
   {
     shop: "Greens",
     logo: IMAGES.logoGreens,
+    logoScale: 1,
     medal: IMAGES.medalSilver,
     amount: "€100",
     color: COLORS.dark,
@@ -65,6 +70,7 @@ export const PRIZES = [
   {
     shop: "PAVI PAMA",
     logo: IMAGES.logoPaviPama,
+    logoScale: 0.72,
     medal: IMAGES.medalBronze,
     amount: "€50",
     color: COLORS.coral,

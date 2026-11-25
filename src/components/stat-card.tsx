@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     color: COLORS.gray,
   },
   link: {
-    fontFamily: FONTS.regular,
+    fontFamily: FONTS.semiBold,
     fontSize: 12,
     lineHeight: 16,
     color: COLORS.coral,

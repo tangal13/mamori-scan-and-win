@@ -1,6 +1,6 @@
 import { useRouter } from "expo-router";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { ActionCard } from "@/components/action-card";
 import { AppButton } from "@/components/app-button";
@@ -11,14 +11,16 @@ import { StatCard } from "@/components/stat-card";
 import { COLORS } from "@/constants/colors";
 import { ACTIONS, PRIZES, STATS } from "@/constants/content";
 import { STRINGS } from "@/constants/strings";
-import { FONTS, SPACING } from "@/constants/theme";
+import { CARD_SHADOW, FONTS, SPACING } from "@/constants/theme";
 
 export default function ScanAndWinScreen() {
   const router = useRouter();
+  const insets = useSafeAreaInsets();
 
   return (
-    <SafeAreaView edges={["top"]} style={styles.safeArea}>
-      <ScrollView style={styles.scroll} contentContainerStyle={styles.content}>
+    <View style={styles.screen}>
+      <View style={[styles.statusBar, { height: insets.top }]} />
+      <ScrollView contentContainerStyle={styles.content}>
         <ProfileHeader />
 
         <View style={styles.actions}>
@@ -57,17 +59,20 @@ export default function ScanAndWinScreen() {
 
         <AppButton title={STRINGS.shareButton} variant="outline" />
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  safeArea: {
+  screen: {
     flex: 1,
-    backgroundColor: COLORS.white,
-  },
-  scroll: {
     backgroundColor: COLORS.background,
+  },
+  statusBar: {
+    // Above the content, so its shadow falls on it.
+    zIndex: 1,
+    backgroundColor: COLORS.white,
+    boxShadow: CARD_SHADOW,
   },
   content: {
     gap: SPACING.large,

@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
   button: {
     // The default padding cuts off "Scan & Win" on narrow phones.
     paddingHorizontal: 0,
+    paddingTop: 10,
     // Every tab has the line, so the icons don't move when it turns green.
     borderTopWidth: 2,
     borderTopColor: "transparent",

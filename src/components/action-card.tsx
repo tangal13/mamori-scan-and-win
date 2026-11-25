@@ -9,6 +9,7 @@ type ActionCardProps = {
   icon: ImageProps["source"];
   iconColor: string;
   circleColor: string;
+  borderColor: string;
   onPress: () => void;
 };
 
@@ -17,11 +18,15 @@ export function ActionCard({
   icon,
   iconColor,
   circleColor,
+  borderColor,
   onPress,
 }: ActionCardProps) {
   return (
     <Pressable accessibilityRole="button" onPress={onPress} style={styles.card}>
-      <View style={[styles.circle, { backgroundColor: circleColor }]}>
+      <View style={[
+          styles.circle,
+          { backgroundColor: circleColor, borderColor },
+        ]}>
         <Image source={icon} tintColor={iconColor} style={styles.icon} />
       </View>
       {/* The design always shows the two words on two lines. */}
@@ -47,7 +52,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 20,
     borderWidth: 1,
-    borderColor: COLORS.divider,
   },
   icon: {
     width: 24,
