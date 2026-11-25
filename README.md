@@ -1,56 +1,72 @@
-# Welcome to your Expo app 👋
+# Mamori: Scan & Win
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+The "Scan & Win" screen from the Mamori internship task, built with React Native and Expo (SDK 58).
 
-## Get started
+## Run it
 
-1. Install dependencies
-
-   ```bash
-   npm install
-   ```
-
-2. Start the app
-
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **src/app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+You need [Node.js](https://nodejs.org) 22 or newer and the [Expo Go](https://expo.dev/go) app on your phone.
 
 ```bash
-npm run reset-project
+npm install
+npx expo start
 ```
 
-This command will move the starter code to the **example** directory and create a blank **src/app** directory where you can start developing.
+Scan the QR code with Expo Go (Android) or the Camera app (iPhone). Phone and computer must be on the same Wi-Fi. If they can't connect, use `npx expo start --tunnel`.
 
-### Other setup steps
+Checks: `npx tsc --noEmit` and `npx expo lint`.
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+## What it does
 
-## Learn more
+- Five tabs. The app opens on **Scan & Win**.
+- **Find Products**, **Take Photos** and **Earn Tickets** open their own screen.
+- The date of the next draw comes from a mock API and is shown as a live countdown, with messages for loading, errors and a draw that has started.
 
-To learn more about developing your project with Expo, look at the following resources:
+## Structure
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```
+src/
+  app/          Screens. Each file is a route (Expo Router).
+    (tabs)/     The five tabs. index.tsx is Scan & Win.
+  components/   Reusable parts of the screen.
+  hooks/        use-next-draw.ts gets the draw date.
+  constants/    Colours, fonts, spacing, texts, images, content, API address.
+```
 
-## Join the community
+Cards that repeat (actions, stats, prizes) are one component each, filled from lists in `constants/content.ts`. Changing a prize means changing data, not layout.
 
-Join our community of developers creating universal apps.
+## Mock API
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+`GET` [`/next-draw`](https://api.mockfly.dev/mocks/006935b1-a88e-432c-8eb9-ac9a371c7aaa/next-draw) on Mockfly returns:
+
+```json
+{ "nextDrawAt": "2026-12-30T20:00:00+01:00" }
+```
+
+The date has a time zone because a draw is one moment everywhere. The date box and the countdown use the same value, so they can't disagree.
+
+## Choices
+
+| Choice | Why |
+| --- | --- |
+| `react-timer-hook` | Actively maintained and only returns numbers, so the design stays ours. `react-native-countdown-component` was last published in 2020, and `react-countdown` asks for `react-dom`. |
+| Expo Router | Expo's default. The folders show the navigation. |
+| `Tabs` from `expo-router/js-tabs` | Can be styled like the design (dark bar, green line). |
+| `fetch` and `useState` in one hook | One request and one screen don't need axios or Redux. |
+| `backgroundImage` for the gradient | Part of React Native, so no extra package. |
+| `expo-image` | Comes with the template and shows SVG files. |
+| Nunito and Fira Sans, loaded with `useFonts` | Works in Expo Go. |
+
+## Problems and solutions
+
+- **The phone opened on Home, the browser on Scan & Win.** The tabs folder had no layout file yet, so Expo Router listed Home first. Adding the layout solved it.
+- **Text was cut off at 360 points wide.** The design is 390 wide, so it only showed up when testing other sizes.
+- **Larger text pushed the countdown below the date.** Found on a real phone with a larger font setting. The big numbers no longer grow with it; the labels do.
+
+## Not included
+
+- Real scanning, login and user data.
+- "Scan Products & Win", "Share with Friends & Win" and the "View" links are visual only.
+
+## How AI was used
+
+Claude (AI) wrote the code and the first version of this README. I set the direction, created the mock API and tested the app on my Android phone, which brought the first and third problem above to light. Later commits name Claude as co-author; the first ones don't, but AI helped with those too.
